@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Barecates
+  - Bottom
+  - looseCollider
+  - ObstaclesCombination
+  - Barecates Left
+  - Barecates Right
+  - AudioSource
+  - SuperPower
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Backround
+    uniqueID: 2946251641
+    locked: 0
+  - name: Cars
+    uniqueID: 602746051
+    locked: 0
+  - name: Buttons
+    uniqueID: 831057719
+    locked: 0
+  - name: Main
+    uniqueID: 1065516419
+    locked: 0
+  - name: Canvas
+    uniqueID: 1334838309
+    locked: 0
+  - name: UP Canvas
+    uniqueID: 1789286189
+    locked: 0

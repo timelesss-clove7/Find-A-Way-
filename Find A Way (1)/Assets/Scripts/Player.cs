@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] float fadeConstant;
     [SerializeField] float superpowerDuration;
     [SerializeField] float diffrentialSuperpowerDuration;
+    [SerializeField] float margainFromBottom;
+    [SerializeField] Vector3 startPos = new Vector3(0, -1.3f, 1);
 
     [Header("Systems")]
     [SerializeField] ParticleSystem hitEffect;
@@ -26,36 +28,36 @@ public class Player : MonoBehaviour
     Vector2 moveInput;
     Camera mainCamera;
     Audiosource audiosource;
-    Vector2 bottom;
+    Vector3 startPosWorld;
     Barectates barectates;
     Vector2 currentPosition = new Vector2();
     PrimarySystem primarySystem;
     [SerializeField] GameObject superPower;
-    Color color;
-    float minTime;
-    float maxTime;
+    // Color color;
+    // float minTime;
+    // float maxTime;
 
-    void Awake()
-    {
-        minTime = superpowerDuration - diffrentialSuperpowerDuration;
-        maxTime = superpowerDuration + diffrentialSuperpowerDuration;
-    }
+    // void Awake()
+    // {
+    //     minTime = superpowerDuration - diffrentialSuperpowerDuration;
+    //     maxTime = superpowerDuration + diffrentialSuperpowerDuration;
+    // }
 
     void Start()
     {
-        bottom = GameObject.FindGameObjectWithTag("Bottom").transform.position;
         mainCamera = Camera.main;
         currentPlayerRigidbody = GetComponent<Rigidbody2D>();
-        color = this.GetComponent<SpriteRenderer>().color;
-        transform.position = bottom;
+        // color = this.GetComponent<SpriteRenderer>().color;
         primarySystem = FindObjectOfType<PrimarySystem>();
         audiosource = FindObjectOfType<Audiosource>();
         barectates = FindObjectOfType<Barectates>();
+        transform.position = startPos;
+        startPosWorld = mainCamera.WorldToScreenPoint(startPos);
+        playerYPosition = startPosWorld.y;
     }
 
     void FixedUpdate()
     {
-        playerYPosition = bottom.y + 240;
         CarMove();
         //FlipSprite();
     }
@@ -154,16 +156,16 @@ public class Player : MonoBehaviour
     public void Invinsible()
     {
         isInvisible = true;
-        color.a = fadeConstant;
-        this.GetComponent<SpriteRenderer>().color = color;
-        Invoke("ResetToNormal", UnityEngine.Random.Range(minTime, maxTime));
+        // color.a = fadeConstant;
+        // this.GetComponent<SpriteRenderer>().color = color;
+        // Invoke("ResetToNormal", UnityEngine.Random.Range(minTime, maxTime));
     }
 
     private void ResetToNormal()
     {
         isInvisible = false;
-        color.a = 1f;
-        this.GetComponent<SpriteRenderer>().color = color;
+        // color.a = 1f;
+        // this.GetComponent<SpriteRenderer>().color = color;
     }
 
     void PlayHitEffect()

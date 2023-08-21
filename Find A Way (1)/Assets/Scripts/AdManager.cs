@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class AdManager : MonoBehaviour
 {
-    public static AdManager Instance; 
+    public static AdManager Instance;
 
-     void Awake() {
-        if (Instance != null && Instance != this )
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
+
     }
 }

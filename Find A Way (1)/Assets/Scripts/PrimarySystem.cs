@@ -43,13 +43,6 @@ public class PrimarySystem : MonoBehaviour
         scoreTextMenu.text = currentScore.ToString("0000");
         highScoreTextMenu.text = "High Score : " + PlayerPrefs.GetInt("HighScore", 0).ToString("0000");
     }
-
-    /*public void PauseMenuSetup()
-    {
-        myAnimator.SetBool("lost", true);
-        scoreTextMenu.text = currentScore.ToString("0000");
-        highScoreTextMenu.text = "High Score : " + PlayerPrefs.GetInt("HighScore", 0).ToString("0000");
-    }*/
     public void BackButton()
     {
         SceneManager.LoadScene("MainMenu");

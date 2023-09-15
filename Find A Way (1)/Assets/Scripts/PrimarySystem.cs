@@ -4,13 +4,12 @@ using TMPro;
 
 public class PrimarySystem : MonoBehaviour
 {
+    [SerializeField] GameObject loseMenu;
     [SerializeField] int scoreVariation = 25;
     [SerializeField] int breakableBlocks;
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI highScoreText;
     [SerializeField] TextMeshProUGUI scoreTextMenu;
     [SerializeField] TextMeshProUGUI highScoreTextMenu;
-    [SerializeField] GameObject panel;
     [SerializeField] Animator myAnimator;
     int highscore;
     public int currentScore;
@@ -39,9 +38,15 @@ public class PrimarySystem : MonoBehaviour
 
     public void LoseMenuSetup()
     {
-        myAnimator.SetBool("lost", true);
+        loseMenu.SetActive(true);
+        myAnimator.SetBool("Lose", true);
         scoreTextMenu.text = currentScore.ToString("0000");
         highScoreTextMenu.text = "High Score : " + PlayerPrefs.GetInt("HighScore", 0).ToString("0000");
+    }
+
+    public void LoseMenuDismantle()
+    {
+        loseMenu.SetActive(false);
     }
     public void BackButton()
     {

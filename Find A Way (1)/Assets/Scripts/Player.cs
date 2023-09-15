@@ -149,8 +149,13 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(screenDelay);
         pauseButton.enabled = false;
         primarySystem.LoseMenuSetup();
-        Debug.Log(primarySystem.currentScore);
+    }
 
+    public void ContinueGame()
+    {
+        isAlive = true;
+        pauseButton.enabled = true;
+        primarySystem.LoseMenuDismantle();
     }
 
     public void Invinsible()

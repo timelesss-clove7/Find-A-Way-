@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8899bc9fae4b9244d8c01a3ea6902fde
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Carme
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d1aae4c6c6e792140b81469850956da5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

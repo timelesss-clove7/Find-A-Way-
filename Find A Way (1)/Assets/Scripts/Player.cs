@@ -9,12 +9,12 @@ public class Player : MonoBehaviour
 {
     public bool isAlive = true;
 
+    public float lastTapTime = 1f;
+
     [Header("Values")]
+    [SerializeField] float doubleTapTime = 0.3f;
     [SerializeField] float carSpeed;
     [SerializeField] float screenDelay;
-    [SerializeField] float fadeConstant;
-    [SerializeField] float superpowerDuration;
-    [SerializeField] float diffrentialSuperpowerDuration;
     [SerializeField] float margainFromBottom;
     [SerializeField] Vector3 startPos = new Vector3(0, -1.3f, 1);
 
@@ -23,8 +23,8 @@ public class Player : MonoBehaviour
     [SerializeField] float playerYPosition;
     [SerializeField] Button pauseButton;
 
-    bool isInvisible = false;
     Rigidbody2D currentPlayerRigidbody;
+    ButtonsMain buttonsMain;
     Vector2 moveInput;
     Camera mainCamera;
     Audiosource audiosource;
@@ -32,28 +32,23 @@ public class Player : MonoBehaviour
     Barectates barectates;
     Vector2 currentPosition = new Vector2();
     PrimarySystem primarySystem;
-    [SerializeField] GameObject superPower;
-    // Color color;
-    // float minTime;
-    // float maxTime;
-
-    // void Awake()
-    // {
-    //     minTime = superpowerDuration - diffrentialSuperpowerDuration;
-    //     maxTime = superpowerDuration + diffrentialSuperpowerDuration;
-    // }
 
     void Start()
     {
         mainCamera = Camera.main;
         currentPlayerRigidbody = GetComponent<Rigidbody2D>();
-        // color = this.GetComponent<SpriteRenderer>().color;
         primarySystem = FindObjectOfType<PrimarySystem>();
         audiosource = FindObjectOfType<Audiosource>();
         barectates = FindObjectOfType<Barectates>();
+        buttonsMain = FindObjectOfType<ButtonsMain>();
         transform.position = startPos;
         startPosWorld = mainCamera.WorldToScreenPoint(startPos);
         playerYPosition = startPosWorld.y;
+    }
+
+    void Update()
+    {
+        doubleTapDetection();
     }
 
     void FixedUpdate()
@@ -67,6 +62,29 @@ public class Player : MonoBehaviour
         moveInput = value.Get<Vector2>();
         Debug.Log(moveInput);
     }
+
+    void doubleTapDetection()
+    {
+        if (isAlive)
+        {
+            if (Touchscreen.current == null)
+                return;
+
+            var touch = Touchscreen.current.primaryTouch;
+
+            if (touch.press.wasPressedThisFrame)
+            {
+                if (Time.time - lastTapTime <= doubleTapTime)
+                {
+                    Debug.Log("Double Tap!");
+                    buttonsMain.PauseButton();
+                }
+
+                lastTapTime = Time.time;
+            }
+        }
+    }
+
     void CarMove()
     {
         if (isAlive)
@@ -130,7 +148,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "ObstaclesCombination" && isAlive && !isInvisible)
+        if (other.tag == "ObstaclesCombination" && isAlive)
         {
             Die();
         }
@@ -156,21 +174,6 @@ public class Player : MonoBehaviour
         isAlive = true;
         pauseButton.enabled = true;
         primarySystem.LoseMenuDismantle();
-    }
-
-    public void Invinsible()
-    {
-        isInvisible = true;
-        // color.a = fadeConstant;
-        // this.GetComponent<SpriteRenderer>().color = color;
-        // Invoke("ResetToNormal", UnityEngine.Random.Range(minTime, maxTime));
-    }
-
-    private void ResetToNormal()
-    {
-        isInvisible = false;
-        // color.a = 1f;
-        // this.GetComponent<SpriteRenderer>().color = color;
     }
 
     void PlayHitEffect()

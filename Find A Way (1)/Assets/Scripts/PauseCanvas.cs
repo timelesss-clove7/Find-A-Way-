@@ -32,6 +32,7 @@ public class PauseCanvas : MonoBehaviour
     public void ResumeButton()
     {
         Time.timeScale = 1;
+        player.lastTapTime = 1f;
         Panel.SetActive(false);
     }
     public void ResetButton()

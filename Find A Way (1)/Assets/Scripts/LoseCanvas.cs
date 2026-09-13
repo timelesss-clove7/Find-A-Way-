@@ -6,18 +6,15 @@ using TMPro;
 using UnityEngine.UI;
 public class LoseCanvas : MonoBehaviour
 {
-    [SerializeField] Button watchAD;
+    Player player;
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
     public void RestartButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
-    }
-
-    public void WatchAD()
-    {
-        AdManager.Instance.ShowAd(this);
-
-        watchAD.interactable = false;
     }
 
     public void HomeButton()

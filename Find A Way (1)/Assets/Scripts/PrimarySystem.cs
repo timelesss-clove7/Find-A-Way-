@@ -39,7 +39,7 @@ public class PrimarySystem : MonoBehaviour
     public void LoseMenuSetup()
     {
         loseMenu.SetActive(true);
-        myAnimator.SetBool("Lose", true);
+        // myAnimator.SetBool("Lose", true);
         scoreTextMenu.text = currentScore.ToString("0000");
         highScoreTextMenu.text = "High Score : " + PlayerPrefs.GetInt("HighScore", 0).ToString("0000");
     }

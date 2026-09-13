@@ -8,8 +8,6 @@ public class Audiosource : MonoBehaviour
 
     [Header("Crash")]
     [SerializeField] AudioClip crashClip;
-    [Header("SuperPower")]
-    [SerializeField] AudioClip superPowerClip;
 
     float genralVolume;
 
@@ -44,10 +42,5 @@ public class Audiosource : MonoBehaviour
     public void PlayCrashSoundEffect()
     {
         AudioSource.PlayClipAtPoint(crashClip, cameraPos, genralVolume);
-    }
-
-    public void PlaySuperPowerSoundEffect()
-    {
-        AudioSource.PlayClipAtPoint(superPowerClip, cameraPos, genralVolume);
     }
 }

@@ -10,7 +10,6 @@ public class PrimarySystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI scoreTextMenu;
     [SerializeField] TextMeshProUGUI highScoreTextMenu;
-    [SerializeField] Animator myAnimator;
     int highscore;
     public int currentScore;
 
@@ -39,7 +38,6 @@ public class PrimarySystem : MonoBehaviour
     public void LoseMenuSetup()
     {
         loseMenu.SetActive(true);
-        // myAnimator.SetBool("Lose", true);
         scoreTextMenu.text = currentScore.ToString("0000");
         highScoreTextMenu.text = "High Score : " + PlayerPrefs.GetInt("HighScore", 0).ToString("0000");
     }

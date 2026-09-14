@@ -22,10 +22,6 @@ public class PauseCanvas : MonoBehaviour
 
     void Update()
     {
-        if (primarySystem.currentScore.ToString() == null)
-        {
-            Debug.Log("Karra li basti");
-        }
         pauseScoreText.text = "Score : " + primarySystem.currentScore.ToString("0000");
         pauseHighScoreText.text = "High-Score : " + PlayerPrefs.GetInt("HighScore", 0).ToString("0000");
     }

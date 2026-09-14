@@ -13,9 +13,7 @@ public class Player : MonoBehaviour
 
     [Header("Values")]
     [SerializeField] float doubleTapTime = 0.3f;
-    [SerializeField] float carSpeed;
     [SerializeField] float screenDelay;
-    [SerializeField] float margainFromBottom;
     [SerializeField] Vector3 startPos = new Vector3(0, -1.3f, 1);
 
     [Header("Systems")]

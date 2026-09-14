@@ -76,7 +76,7 @@ Important systems include:
 1. Clone or download this repository.
 2. Open **Unity Hub**.
 3. Select **Add Project** / **Open**.
-4. Select the root `Find-A-Way` folder.
+4. Select the root `Find-A-Way (1)` folder.
 5. Open the project using a compatible Unity version.
 6. Open the relevant scene from the `Assets` folder and press **Play**.
 
